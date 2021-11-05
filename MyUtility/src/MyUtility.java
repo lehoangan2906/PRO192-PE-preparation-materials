@@ -4,8 +4,10 @@ import java.io.*;
 import java.lang.*;
 import java.math.*;
 
+
 public class MyUtility {
 
+    
     public static boolean isPrime(int n) {
         if (n <= 1) {
             return false;
@@ -24,7 +26,7 @@ public class MyUtility {
         //tính tổng các chữ số có trong number
         //ví dụ: đầu vào là 3713 thì đầu ra là 14 (vì 3+7+1+3 = 14)
         int sum;
-        
+
         /* Single line that calculates sum */
         for (sum = 0; n > 0; sum += n % 10, n /= 10);
 
@@ -171,70 +173,71 @@ public class MyUtility {
     }
 
     
-    
-    public static int findOccurances(String[] paragraph, String target){
-        
+    public static int findOccurances(String[] paragraph, String target) {
+
         int index = 0, totalOccurances = 0;
-        
-        for (int lineNumber = 0; lineNumber < paragraph.length; lineNumber++){
+
+        for (int lineNumber = 0; lineNumber < paragraph.length; lineNumber++) {
             String line = paragraph[lineNumber];
-            while(true){
+            while (true) {
                 index = line.indexOf(target, index);    // line.indexof(String string, from index)
-                if (index != -1){
+                if (index != -1) {
                     System.out.println("Found at line number " + lineNumber + " at position " + index);
                     totalOccurances++;
                     index += target.length();
-                }else{
+                } else {
                     break;
                 }
             }
         }
         return totalOccurances;
     }
+
     
-    
-    public static boolean checkPalindrome(String string){
+    public static boolean checkPalindrome(String string) {
         int len = string.length();
         char[] charArr = string.toCharArray();
-        for (int i = 0; i < charArr.length; i++)
-            if (charArr[i] != charArr[string.length() - 1 - i]){
+        for (int i = 0; i < charArr.length; i++) {
+            if (charArr[i] != charArr[string.length() - 1 - i]) {
                 return false;
             }
+        }
         return true;
     }
+
     
-    
-    public static int countFrequencyOfCharacter(String string){
+    public static int countFrequencyOfCharacter(String string) {
         int count = 0;
-        for (int i = 0; i < string.length(); i++){
+        for (int i = 0; i < string.length(); i++) {
             // this particular example count occurances of the whitespace character
-            if (Character.isWhitespace(string.charAt(i))){
+            if (Character.isWhitespace(string.charAt(i))) {
                 count++;
             }
         }
         return count;
     }
+
     
-    
-    public static void valueOfDemo(){
+    public static void valueOfDemo() {
         // Returns a new String object that contains data as the string 
         // representation of the passed argument
         char array[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
         System.out.println(String.valueOf(array));
     }
-    
+
     // modify the name of all instances of your variable
-    public static void replace(String[] paragraph, String oldChar, String newChar){
-        for (int linenumber = 0; linenumber < paragraph.length; ++linenumber){
+    public static void replace(String[] paragraph, String oldChar, String newChar) {
+        for (int linenumber = 0; linenumber < paragraph.length; ++linenumber) {
             String line = paragraph[linenumber];
             line = line.replace(oldChar, newChar);
         }
         String paragraph2 = "";
-        for (int i = 0; i < paragraph.length; i++){
+        for (int i = 0; i < paragraph.length; i++) {
             paragraph2 = paragraph2.concat(paragraph[i]);
         }
         System.out.println(paragraph2);
     }
+
     
     public static void main(String[] args) {
         int num = 90;
@@ -263,14 +266,14 @@ public class MyUtility {
         System.out.println("\nCheck palindrome: " + checkPalindrome(string6));
         String string7 = "one, two, three, four, five, six, seven, eight, nine, nineandahalf";
         System.out.println("\nCount occurances of a character : " + countFrequencyOfCharacter(string7));
-        String paragraph1[]  = {"Could music boost your coding performance?\n","Monotonous keyboard clicks can make you lose your train of thought.", "Our minds are tricky and given the opportunity will wander off to look for something a little more exciting."};
-        
+        String paragraph1[] = {"Could music boost your coding performance?\n", "Monotonous keyboard clicks can make you lose your train of thought.", "Our minds are tricky and given the opportunity will wander off to look for something a little more exciting."};
+
         System.out.println("\nReplacing word in a string: ");
         replace(paragraph1, "mind", "soul");
-        
+
         System.out.println("\nFind occurances");
         findOccurances(paragraph1, "music");
-        
+
         System.out.println("\nValue of demo: ");
         valueOfDemo();
     }
